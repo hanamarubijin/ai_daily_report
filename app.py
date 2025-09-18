@@ -3,7 +3,10 @@ from flask import Flask, render_template, request
 from dotenv import load_dotenv
 import openai
 
-load_dotenv()
+# ローカル環境のみ .env を読み込む
+if os.getenv("RENDER") is None:
+    from dotenv import load_dotenv
+    load_dotenv()
 openai.api_key = os.getenv("OPENAI_API_KEY")
 
 app = Flask(__name__)
