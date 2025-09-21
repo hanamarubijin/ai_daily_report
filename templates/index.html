@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>AI日報整形ツール（ルート営業版）</title>
-<link href="https://cdn.jsdelivr.net/npm/bootswatch@5.3.2/dist/cosmo/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootswatch@5.3.2/dist/cosmo/bootstrap.min.css" rel="stylesheet">
   <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
 </head>
 <body>
@@ -11,35 +11,37 @@
     <h1 class="mb-2 text-primary">AI日報整形ツール（ルート営業版）</h1>
     <p class="text-muted">Active AI Engine: <strong>{{ ai_provider | upper }}</strong></p>
 
+    <a href="/history" class="btn btn-outline-secondary mb-3">過去の日報履歴を見る</a>
+
     <form method="POST" class="mb-4">
       <div class="mb-3">
         <label for="tasks" class="form-label">作業内容（箇条書き）</label>
-        <textarea name="tasks" id="tasks" class="form-control" rows="6" placeholder="- 午前：〇〇\n- 午後：〇〇"></textarea>
+        <textarea name="tasks" id="tasks" class="form-control" rows="6" placeholder="- 午前：〇〇\n- 午後：〇〇">{{ tasks }}</textarea>
       </div>
 
       <div class="row mb-3">
         <div class="col-md-4">
           <label class="form-label">文体</label>
           <select name="tone" class="form-select">
-            <option value="丁寧">丁寧</option>
-            <option value="カジュアル">カジュアル</option>
-            <option value="報告書風">報告書風</option>
+            <option value="丁寧" {% if tone == "丁寧" %}selected{% endif %}>丁寧</option>
+            <option value="カジュアル" {% if tone == "カジュアル" %}selected{% endif %}>カジュアル</option>
+            <option value="報告書風" {% if tone == "報告書風" %}selected{% endif %}>報告書風</option>
           </select>
         </div>
         <div class="col-md-4">
           <label class="form-label">報告対象</label>
           <select name="audience" class="form-select">
-            <option value="上司">上司</option>
-            <option value="同僚">同僚</option>
-            <option value="顧客">顧客</option>
+            <option value="上司" {% if audience == "上司" %}selected{% endif %}>上司</option>
+            <option value="同僚" {% if audience == "同僚" %}selected{% endif %}>同僚</option>
+            <option value="顧客" {% if audience == "顧客" %}selected{% endif %}>顧客</option>
           </select>
         </div>
         <div class="col-md-4">
           <label class="form-label">出力形式</label>
           <select name="format" class="form-select">
-            <option value="文章(非Markdown)">文章(非Markdown)</option>
-            <option value="箇条書き(非Markdown)">箇条書き(非Markdown)</option>
-            <option value="Markdown">Markdown</option>
+            <option value="文章(非Markdown)" {% if format_type == "文章(非Markdown)" %}selected{% endif %}>文章(非Markdown)</option>
+            <option value="箇条書き(非Markdown)" {% if format_type == "箇条書き(非Markdown)" %}selected{% endif %}>箇条書き(非Markdown)</option>
+            <option value="Markdown" {% if format_type == "Markdown" %}selected{% endif %}>Markdown</option>
           </select>
         </div>
       </div>
