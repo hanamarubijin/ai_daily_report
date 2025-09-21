@@ -1,0 +1,36 @@
+body {
+  background: linear-gradient(to right, #fdfbfb, #ebedee);
+  font-family: 'Segoe UI', 'Noto Sans JP', sans-serif;
+}
+
+h1 {
+  font-weight: 600;
+  color: #2c3e50;
+}
+
+p.text-muted strong {
+  color: #dc3545; /* 使用中AIを赤系でアクセント */
+}
+
+.result-box {
+  background-color: #ffffff;
+  border-left: 6px solid #0d6efd;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  padding: 1rem;
+  border-radius: 8px;
+  white-space: pre-wrap;
+}
+
+textarea::placeholder {
+  color: #6c757d;
+}
+
+button.btn-outline-secondary {
+  border-color: #0d6efd;
+  color: #0d6efd;
+}
+
+button.btn-outline-secondary:hover {
+  background-color: #0d6efd;
+  color: #fff;
+}
